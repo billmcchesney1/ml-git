@@ -3,17 +3,21 @@
 SPDX-License-Identifier: GPL-2.0-only
 """
 
-from ml_git.commands.utils import repositories, DATASET, MODEL, LABELS
-
-from ml_git.commands.general import mlgit
+import click
 from click_didyoumean import DYMGroup
 
+from ml_git.commands.general import mlgit
+from ml_git.commands.utils import repositories, DATASET, MODEL, LABELS, DATASETS, MODELS
 
-@mlgit.group(DATASET, help='Management of datasets within this ml-git repository.', cls=DYMGroup)
-def dataset():
+
+@mlgit.group([DATASETS, DATASET], help='Management of datasets within this ml-git repository.', cls=DYMGroup)
+@click.pass_context
+def dataset(ctx):
     """
     Management of datasets within this ml-git repository.
     """
+    if ctx.command.name == DATASET:
+        print('WARNING - MLGit: \'%s\' is deprecated use \'%s\' instead.' % (DATASET, DATASETS))
     pass
 
 
@@ -25,11 +29,14 @@ def dt_tag_group():
     pass
 
 
-@mlgit.group(MODEL, help='Management of models within this ml-git repository.', cls=DYMGroup)
-def model():
+@mlgit.group([MODELS, MODEL], help='Management of models within this ml-git repository.', cls=DYMGroup)
+@click.pass_context
+def model(ctx):
     """
     Management of models within this ml-git repository.
     """
+    if ctx.command.name == MODEL:
+        print('WARNING - MLGit: \'%s\' is deprecated use \'%s\' instead.' % (MODEL, MODELS))
     pass
 
 

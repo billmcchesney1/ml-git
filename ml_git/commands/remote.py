@@ -6,11 +6,12 @@ SPDX-License-Identifier: GPL-2.0-only
 import click
 from click_didyoumean import DYMGroup
 
+from ml_git.commands.custom_group import CustomMultiGroup
 from ml_git.commands.repository import repository
-from ml_git.commands.utils import DATASET, LABELS, MODEL, repositories, set_verbose_mode
+from ml_git.commands.utils import DATASET, LABELS, MODEL, repositories, set_verbose_mode, DATASETS, MODELS
 
 
-@repository.group('remote', help='Configure remote ml-git metadata repositories.', cls=DYMGroup)
+@repository.group('remote', help='Configure remote ml-git metadata repositories.', cls=CustomMultiGroup)
 def repo_remote():
     """
     Configure remote ml-git metadata repositories.
@@ -18,15 +19,18 @@ def repo_remote():
     pass
 
 
-@repo_remote.group('dataset', help='Manage remote ml-git dataset metadata repository.', cls=DYMGroup)
-def repo_remote_ds():
+@repo_remote.group([DATASETS, DATASET], help='Manage remote ml-git datasets metadata repository.', cls=DYMGroup)
+@click.pass_context
+def repo_remote_ds(ctx):
     """
     Manage remote ml-git dataset metadata repository.
     """
+    if ctx.command.name == DATASET:
+        print('WARNING - MLGit: \'%s\' is deprecated use \'%s\' instead.' % (DATASET, DATASETS))
     pass
 
 
-@repo_remote.group('labels', help='Manage remote ml-git labels metadata repository.', cls=DYMGroup)
+@repo_remote.group(LABELS, help='Manage remote ml-git labels metadata repository.', cls=DYMGroup)
 def repo_remote_lb():
     """
     Manage remote ml-git labels metadata repository.
@@ -34,11 +38,14 @@ def repo_remote_lb():
     pass
 
 
-@repo_remote.group('model', help='Manage remote ml-git model metadata repository.', cls=DYMGroup)
-def repo_remote_md():
+@repo_remote.group([MODELS, MODEL], help='Manage remote ml-git models metadata repository.', cls=DYMGroup)
+@click.pass_context
+def repo_remote_md(ctx):
     """
     Manage remote ml-git model metadata repository.
     """
+    if ctx.command.name == MODEL:
+        print('WARNING - MLGit: \'%s\' is deprecated use \'%s\' instead.' % (MODEL, MODELS))
     pass
 
 

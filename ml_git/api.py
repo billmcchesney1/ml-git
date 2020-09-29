@@ -8,7 +8,9 @@ import shutil
 import tempfile
 
 from ml_git import log
+from ml_git.commands.utils import DATASETS, DATASET, MODELS, MODEL
 from ml_git.config import config_load
+from ml_git.constants import EntityType
 from ml_git.repository import Repository
 from ml_git.log import init_logger
 
@@ -16,6 +18,13 @@ init_logger()
 
 
 def get_repository_instance(repo_type):
+    entity_types = [entity.value for entity in EntityType]
+    if repo_type not in entity_types and repo_type != 'project':
+        raise RuntimeError('Invalid entity type. Valid values are: %s' % entity_types)
+    if repo_type == DATASETS:
+        repo_type = DATASET
+    elif repo_type == MODELS:
+        repo_type = MODEL
     return Repository(config_load(), repo_type)
 
 
@@ -39,7 +48,7 @@ def checkout(entity, tag, sampling=None, retries=2, force=False, dataset=False, 
         checkout('dataset', 'computer-vision__images3__imagenet__1')
 
     Args:
-        entity (str): The type of an ML entity. (dataset, labels or model)
+        entity (str): The type of an ML entity. (datasets, labels or models)
         tag (str): An ml-git tag to identify a specific version of an ML entity.
         sampling (dict): group: <amount>:<group> The group sample option consists of amount and group used to
                                  download a sample.\n
@@ -59,7 +68,7 @@ def checkout(entity, tag, sampling=None, retries=2, force=False, dataset=False, 
 
     """
 
-    repo = Repository(config_load(), entity)
+    repo = get_repository_instance(entity)
     repo.update()
     if sampling is not None and not validate_sample(sampling):
         return None
@@ -92,7 +101,7 @@ def clone(repository_url, folder=None, track=False):
 
     """
 
-    repo = Repository(config_load(), 'project')
+    repo = get_repository_instance('project')
     if folder is not None:
         repo.clone_config(repository_url, folder, track)
     else:
@@ -112,14 +121,14 @@ def add(entity_type, entity_name, bumpversion=False, fsck=False, file_path=[]):
         add('dataset', 'dataset-ex', bumpversion=True)
 
     Args:
-        entity_type (str): The type of an ML entity. (dataset, labels or model)
+        entity_type (str): The type of an ML entity. (datasets, labels or models)
         entity_name (str): The name of the ML entity you want to add the files.
         bumpversion (bool, optional): Increment the entity version number when adding more files [default: False].
         fsck (bool, optional): Run fsck after command execution [default: False].
         file_path (list, optional): List of files that must be added by the command [default: all files].
     """
 
-    repo = Repository(config_load(), entity_type)
+    repo = get_repository_instance(entity_type)
     repo.add(entity_name, file_path, bumpversion, fsck)
 
 
@@ -130,7 +139,7 @@ def commit(entity, ml_entity_name, commit_message=None, related_dataset=None, re
         commit('dataset', 'dataset-ex')
 
     Args:
-        entity (str): The type of an ML entity. (dataset, labels or model).
+        entity (str): The type of an ML entity. (datasets, labels or models)
         ml_entity_name (str): Artefact name to commit.
         commit_message (str, optional): Message of commit.
         related_dataset (str, optional): Artefact name of dataset related to commit.
@@ -157,11 +166,11 @@ def push(entity, entity_name,  retries=2, clear_on_fail=False):
             push('dataset', 'dataset-ex')
 
         Args:
-            entity (str): The type of an ML entity. (dataset, labels or model).
+            entity (str): The type of an ML entity. (datasets, labels or models)
             entity_name (str): An ml-git entity name to identify a ML entity.
             retries (int, optional): Number of retries to upload the files to the storage [default: 2].
             clear_on_fail (bool, optional): Remove the files from the store in case of failure during the push operation [default: False].
     """
 
-    repo = Repository(config_load(), entity)
+    repo = get_repository_instance(entity)
     repo.push(entity_name, retries, clear_on_fail)

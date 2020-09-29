@@ -1013,6 +1013,8 @@ class Repository(object):
         log.info(log_info, class_name=REPOSITORY_CLASS_NAME)
 
     def metadata_exists(self, entity):
+        if entity == EntityType.MODELS.value or entity == EntityType.DATASETS.value:
+            return False
         self.__repo_type = entity
         entity_metadata_path = get_metadata_path(self.__config, self.__repo_type)
         metadata = Metadata('', entity_metadata_path, self.__config, self.__repo_type)

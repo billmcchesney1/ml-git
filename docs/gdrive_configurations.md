@@ -79,7 +79,7 @@ $ ml-git store add path-in-your-drive --type=gdriveh --credentials=/home/profile
 After that initialize the metadata repository:
 
 ```
-$ ml-git dataset init
+$ ml-git datasets init
 ```
 
 

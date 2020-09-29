@@ -34,10 +34,10 @@ def checkout(entity, tag, sampling=None, retries=2, force=False, dataset=False, 
     """This command allows retrieving the data of a specific version of an ML entity.
 
     Example:
-        checkout('dataset', 'computer-vision__images3__imagenet__1')
+        checkout('datasets', 'computer-vision__images3__imagenet__1')
 
     Args:
-        entity (str): The type of an ML entity. (dataset, labels or model)
+        entity (str): The type of an ML entity. (datasets, labels or models)
         tag (str): An ml-git tag to identify a specific version of an ML entity.
         sampling (dict): group: <amount>:<group> The group sample option consists of amount and group used to
                                  download a sample.\n
@@ -67,10 +67,10 @@ def add(entity_type, entity_name, bumpversion=False, fsck=False, file_path=[]):
     """This command will add all the files under the directory into the ml-git index/staging area.
 
     Example:
-        add('dataset', 'dataset-ex', bumpversion=True)
+        add('datasets', 'dataset-ex', bumpversion=True)
 
     Args:
-        entity_type (str): The type of an ML entity. (dataset, labels or model)
+        entity_type (str): The type of an ML entity. (datasets, labels or models)
         entity_name (str): The name of the ML entity you want to add the files.
         bumpversion (bool, optional): Increment the entity version number when adding more files [default: False].
         fsck (bool, optional): Run fsck after command execution [default: False].
@@ -89,10 +89,10 @@ def commit(entity, ml_entity_name, commit_message=None, related_dataset=None, re
     """This command commits the index / staging area to the local repository.
 
     Example:
-        commit('dataset', 'dataset-ex')
+        commit('datasets', 'dataset-ex')
         
     Args:
-        entity (str): The type of an ML entity. (dataset, labels or model).
+        entity (str): The type of an ML entity. (datasets, labels or models)
         ml_entity_name (str): Artefact name to commit.
         commit_message (str, optional): Message of commit.
         related_dataset (str, optional): Artefact name of dataset related to commit.
@@ -111,10 +111,10 @@ def push(entity, entity_name,  retries=2, clear_on_fail=False):
     """This command allows pushing the data of a specific version of an ML entity.
 
         Example:
-            push('dataset', 'dataset-ex')
+            push('datasets', 'dataset-ex')
 
         Args:
-            entity (str): The type of an ML entity. (dataset, labels or model).
+            entity (str): The type of an ML entity. (datasets, labels or models)
             entity_name (str): An ml-git entity name to identify a ML entity.
             retries (int, optional): Number of retries to upload the files to the storage [default: 2].
             clear_on_fail (bool, optional): Remove the files from the store in case of failure during the push operation [default: False].
