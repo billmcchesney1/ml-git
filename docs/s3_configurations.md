@@ -22,7 +22,7 @@ Boto3 looks at various configuration locations until it finds configuration valu
 * The ~/.aws/config file
 
 ```Note:``` 
-If, when creating a storage, you define a specific profile to be used, Boto3 will only search for that profile in the ~/.aws/config file.
+If, when creating a store, you define a specific profile to be used, Boto3 will only search for that profile in the ~/.aws/config file.
 
 You can configure the AWS in three ways (environment variables, through the console or with the [AWS Command Line Interface](https://aws.amazon.com/cli/?nc1=h_ls)). These are described in the following sections.
 
@@ -95,7 +95,7 @@ You can configure the AWS in three ways (environment variables, through the cons
    
 ## MinIO ##
 
-[MinIO](https://min.io/) is a cloud storage server compatible with Amazon S3. That said, you can configure it in the same way as described above by placing Access Key and Secret Access Key of your MinIO bucket.
+[MinIO](https://min.io/) is a cloud store server compatible with Amazon S3. That said, you can configure it in the same way as described above by placing Access Key and Secret Access Key of your MinIO bucket.
 
 
 

@@ -36,7 +36,7 @@ $ ml-git repository init
 
 [![asciicast](https://asciinema.org/a/371025.svg)](https://asciinema.org/a/371025)
 
-Now we need to configure our project with the remote configurations. This section is divided into two parts according to the storage: [Setting up a ml-git project with S3](#config-s3) and [Setting up a ml-git project with MinIO](#config-minio).
+Now we need to configure our project with the remote configurations. This section is divided into two parts according to the store: [Setting up a ml-git project with S3](#config-s3) and [Setting up a ml-git project with MinIO](#config-minio).
 
 After configuring the project with the bucket, the remote ones, the credentials that will be used, and the other configurations that were performed in this section, 
 a good practice is to make the version of the .ml-git folder that was generated in a git repository.

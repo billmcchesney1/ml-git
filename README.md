@@ -45,11 +45,11 @@ $ git config --global user.name "Your User"
 $ git config --global user.email "your_email@example.com"
 ```
 
-2 - Storage:
+2 - Store:
 
-Ml-git needs a configured storage to store data from managed artifacts. Please take a look at the [ml-git architecture and internals documentation](docs/mlgit_internals.md) to better understand how ml-git works internally with data.
+Ml-git needs a configured store to data from managed artifacts. Please take a look at the [ml-git architecture and internals documentation](docs/mlgit_internals.md) to better understand how ml-git works internally with data.
 
-- To configure the storage [see documentation about supported stores and how to configure each one.](docs/storage_configurations.md)
+- To configure the store [see documentation about supported stores and how to configure each one.](docs/store_configurations.md)
 
 
 3 - Ml-git project:
