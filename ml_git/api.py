@@ -51,7 +51,7 @@ def checkout(entity, tag, sampling=None, retries=2, force=False, dataset=False, 
                          random: <amount:frequency> The random sample option consists of amount and frequency
                                 used to download a sample.
                          seed: The seed is used to initialize the pseudorandom numbers.
-        retries (int, optional): Number of retries to download the files from the storage [default: 2].
+        retries (int, optional): Number of retries to download the files from the store [default: 2].
         force (bool, optional): Force checkout command to delete untracked/uncommitted files from the local repository [default: False].
         dataset (bool, optional): If exist a dataset related with the model or labels, this one must be downloaded [default: False].
         labels (bool, optional): If exist labels related with the model, they must be downloaded [default: False].
@@ -161,7 +161,7 @@ def push(entity, entity_name,  retries=2, clear_on_fail=False):
         Args:
             entity (str): The type of an ML entity. (dataset, labels or model).
             entity_name (str): An ml-git entity name to identify a ML entity.
-            retries (int, optional): Number of retries to upload the files to the storage [default: 2].
+            retries (int, optional): Number of retries to upload the files to the store [default: 2].
             clear_on_fail (bool, optional): Remove the files from the store in case of failure during the push operation [default: False].
     """
 
@@ -181,7 +181,7 @@ def create(entity, entity_name, categories, mutability, **kwargs):
             categories (list): Artifact's category name.
             mutability (str): Mutability type. The mutability options are strict, flexible and mutable.
             store_type (str, optional): Data store type [default: s3h].
-            version (int, optional): Number of retries to upload the files to the storage [default: 2].
+            version (int, optional): Number of retries to upload the files to the store [default: 2].
             import_path (str, optional): Path to be imported to the project.
             bucket_name (str, optional): Bucket name.
             import_url (str, optional): Import data from a google drive url.
@@ -227,7 +227,7 @@ def store_add(bucket_name, bucket_type=StoreType.S3H.value, credentials=None, gl
             store_add('my-bucket', type='s3h')
 
         Args:
-            bucket_name (str): The name of the bucket in the storage.
+            bucket_name (str): The name of the bucket in the store.
             bucket_type (str, optional): Store type (s3h, azureblobh or gdriveh) [default: s3h].
             credentials (str, optional): Name of the profile that stores the credentials or the path to the credentials.
             global_configuration (bool, optional): Use this option to set configuration at global level [default: False].

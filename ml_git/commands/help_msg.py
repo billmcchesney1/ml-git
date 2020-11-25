@@ -3,7 +3,7 @@
 SPDX-License-Identifier: GPL-2.0-only
 """
 
-RETRY_OPTION = 'Number of retries to download the files from the storage [default: 2].'
+RETRY_OPTION = 'Number of retries to download the files from the store [default: 2].'
 FORCE_CHECKOUT = 'Force checkout command to delete untracked/uncommitted files from local repository.'
 BARE_OPTION = 'Ability to add/commit/push without having the ml-entity checked out.'
 FSCK_OPTION = 'Run fsck after command execution.'

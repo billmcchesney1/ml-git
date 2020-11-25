@@ -20,7 +20,7 @@ from ml_git.utils import yaml_load, yaml_save, RootPathException, clear, ensure_
 # ml-git-root/
 # ├── .ml-git/config.yaml
 # | 				# describe git repository (dataset, labels, nn-params, models)
-# | 				# describe settings for actual S3/IPFS storage of dataset(s), model(s)
+# | 				# describe settings for actual S3/IPFS store of dataset(s), model(s)
 
 
 def init_mlgit():

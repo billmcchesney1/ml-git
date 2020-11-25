@@ -55,6 +55,6 @@ class Store(abc.ABC):
 
     def import_file_from_url(self, path_dst, url):
         """
-        Method to  import files from storage url to a destine path.
+        Method to  import files from store url to a destine path.
         """
         pass

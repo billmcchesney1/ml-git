@@ -375,7 +375,7 @@ def start_wizard_questions(repotype):
         bucket = input('Please specify the bucket name: _ ').lower()
         if store_type in (StoreType.S3.value, StoreType.S3H.value):
             profile = input('Please specify the credentials: _ ').lower()
-            endpoint = input('If you are using S3 compatible storage (ex. minio), please specify the endpoint URL,'
+            endpoint = input('If you are using S3 compatible store (ex. minio), please specify the endpoint URL,'
                              ' otherwise press ENTER: _ ').lower()
         elif store_type == StoreType.GDRIVEH.value:
             profile = input('Please specify the credentials path: _ ').lower()
