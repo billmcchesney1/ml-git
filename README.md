@@ -47,7 +47,7 @@ $ git config --global user.email "your_email@example.com"
 
 2 - Store:
 
-Ml-git needs a configured store to data from managed artifacts. Please take a look at the [ml-git architecture and internals documentation](docs/mlgit_internals.md) to better understand how ml-git works internally with data.
+Ml-git needs a configured store for the data from managed artifacts. Please take a look at the [ml-git architecture and internals documentation](docs/mlgit_internals.md) to better understand how ml-git works internally with data.
 
 - To configure the store [see documentation about supported stores and how to configure each one.](docs/store_configurations.md)
 
